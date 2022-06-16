@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useSelector } from "react-redux";
 import './App.css';
+import { BrowserRouter as Router , Routes, Route} from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const nowuser = useSelector((state:any) => state.userdetails.value);
+    const route = (
+        <>
+          <Router>
+            <Routes> 
+              <Route path="/" element={<LandingPage />}/>
+              <Route path="/Login" element={<Login />}/> 
+              <Route path="/SignUp" element={<SignUp />}/>
+            </Routes>
+          </Router>
+        </>    
+    )
+
+    const LoggedInUser = (
+      <>
+        <Router>
+            <Routes> 
+              <Route path="/" element={<Home />}/>
+              <Route path="/Login" element={<Home />}/>
+              <Route path="/SignUp" element={<Home />}/>
+            </Routes>
+          </Router>
+      </>
+    )
+    return (
+      nowuser ? LoggedInUser : route
+    )
+ 
 }
 
 export default App;
