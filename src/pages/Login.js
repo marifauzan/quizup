@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { setUser } from "../slice/user-slice";
+import { selectUser, setUser } from "../slice/user-slice";
 import { useSelector, useDispatch } from "react-redux";
 
 function Login() {
     //const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const nowuser = useSelector((state) => state.userdetails.value);
+    const nowuser = useSelector(selectUser);
     const dispatch = useDispatch();
     const [error, setError] = useState('');
 
@@ -25,6 +25,7 @@ function Login() {
         const userLoggedIn = users.data.find(record => (record.email === email  && record.password === password));
         userLoggedIn ? dispatch(setUser(userLoggedIn)) : setError(errormodal);
         console.log(nowuser);
+        
     };
 
         return (

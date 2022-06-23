@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { setUser } from "../slice/user-slice";
+import { selectUser, setUser } from "../slice/user-slice";
 import { useSelector, useDispatch } from "react-redux";
 function SignUp() {
 	const [fullname, setFullName] = useState('');
@@ -11,7 +11,7 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const dispatch = useDispatch();
-    const nowuser = useSelector((state) => state.userdetails.value);
+    const nowuser = useSelector(selectUser);
 
 	const errormodal = (
 		<div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -38,16 +38,13 @@ function SignUp() {
 
 		}).then(response => { dispatch(setUser(response.data));
 			console.log(nowuser.full_name);
-		}).catch(error => {
-			if (error.response.status === 401) setError(error.response.data.message);
-			else setError(errormodal);
 		})
 	}
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 		const users = await axios.get('https://616981a909e030001712c409.mockapi.io/users');
-        const userLoggedIn = users.data.find(record => (record.email === email  && record.password === password));
+        const userLoggedIn = users.data.find(record => record.email === email);
 
 		userLoggedIn ? setError(warningmodal) : addUser();
     };
