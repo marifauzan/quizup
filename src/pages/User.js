@@ -12,6 +12,7 @@ function User() {
     const nowuser = useSelector(selectUser);
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+
     
     const handleLogout = () => {
         dispatch(setUser(null));
@@ -35,13 +36,12 @@ function User() {
 	}
 
     const deleteUser = (e) => {
-        e.preventDefault()
-		axios.delete(`https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`)
-        .then(response => { 
-            if(window.confirm("Are you sure want to delete this account?")) {
-                handleLogout();
-            };
-		})
+        e.preventDefault();
+    
+		if(window.confirm("Are you sure want to delete this account?")) {
+            handleLogout();
+            axios.delete(`https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`);
+        };
 	}
 
     window.alertComponent = function () {
@@ -63,48 +63,45 @@ function User() {
     return(
         <div className="flex">
             <Sidebar />
-            <div className="flex ml-32 md:items-center">
-                <div className="mb-3 mx-16 md:items-center ">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3940/3940403.png" alt="avatar" className="ml-4 mb-5 w-36 h-36"></img>
-                    <h1 className="text-3xl text-center font-semibold">{nowuser.full_name}</h1>
-                    <p className="text-center">@{nowuser.username}</p>
-                    <button onClick={deleteUser} className="text-center mt-10 rounded rounded-xl bg-red-700 px-9 py-2 text-white" >Delete this user</button>
-                </div>
-                <div className="ml-12">
-                <form onSubmit={handleUser} className="w-full max-w-sm m-8 px-5 py-9 bg-white rounded-xl drop-shadow-md" id="edituser-form">
-                <h1 className="block text-gray-500 font-semibold text-xl mb-5 ml-5">Change your username and password</h1>
-                <div class="md:flex md:items-center m-6">
-                    <div class="">
-                    <label class="text-gray-500 font-semibold md:text-left md:mb-3 pr-4" for="inline-full-name">
-                        Name
-                    </label>
-                    <input onChange= { e => e.target.value ? setName(e.target.value) : setName(nowuser.full_name)} 
-                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded rounded-xl w-full py-2 px-9 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-full-name" placeholder={nowuser.full_name}/>
+            <div className="pl-28 grid grid-cols-1 grid-flow-row gap-3 ">
+                <div className="flex mt-24 ml-24">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3940/3940403.png" alt="avatar" className="w-44 h-44"></img>
+                    <div className="m-8">
+                        <h1 className="text-3xl font-semibold">{nowuser.full_name}</h1>
+                        <p className="">@{nowuser.username}</p>
+                        <button className=" rounded rounded-xl border border-gray-300 mr-4 px-9 py-2 text-sm text-gray" >Active</button>
+                        <button onClick={deleteUser} className=" mt-10 rounded rounded-xl bg-rose-500 px-9 py-2 text-sm text-white">
+                                Delete this user
+                        </button>
                     </div>
                 </div>
-                <div class="md:flex md:items-center m-6">
-                    <div class="">
-                    <label class="text-gray-500 font-semibold md:text-left md:mb-3 pr-4" for="inline-password">
-                        New Password
+               
+                <div className="ml-24">
+                <form onSubmit={handleUser} className="px-5 py-6" id="edituser-form">
+                <div class="mb-4">
+                    <label className="input-group">
+                        <span class="label-text w-32">Name</span>
+                        <input onChange= { e => e.target.value !== '' ? setName(e.target.value) : setName(nowuser.full_name)} 
+                        className="input input-bordered w-96" id="inline-full-name" placeholder={nowuser.full_name}/>
                     </label>
-                    <input onChange={e => e.target.value ? setPassword(e.target.value) : setPassword(nowuser.password)} 
-                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded rounded-xl w-full py-2 px-9 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="password" id="inline-password" placeholder="Strong password" required/>
-                    </div>
                 </div>
-                <div class="md:flex md:items-center">
-
-                    <div class="ml-6">
+                <div class="mb-4">
+                    <label className="input-group">
+                        <span class="label-text w-32">New Password</span>
+                        <input onChange={e => e.target.value ? setPassword(e.target.value) : setPassword(nowuser.password)} 
+                        class="input input-bordered w-96" type="password" id="inline-password" placeholder="Strong password" required/>
+                    </label>
+                </div>
+                <div class="mb-8">
                     <button type="submit"
-                     className="block w-full bg-sky-500 py-2 px-3 rounded-xl text-white font-semibold mb-2 hover:bg-purple-600 ">
-                        Change
+                     className="block w-1/4 bg-blue-500 py-2 px-5 rounded-xl text-white text-sm font-semibold mt-6 hover:bg-blue-600 ">
+                        Update
                     </button>
-                    </div>
                 </div>
                 </form>
                 </div>
                 
             </div>
-            
         </div>
     )
 }

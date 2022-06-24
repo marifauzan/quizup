@@ -13,11 +13,11 @@ function SignUp() {
     const dispatch = useDispatch();
     const nowuser = useSelector(selectUser);
 
-	const errormodal = (
-		<div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-			<span class="font-medium">Error! </span>Something went wrong. Please try again later.
-		</div>
-	)
+	// const errormodal = (
+	// 	<div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+	// 		<span class="font-medium">Error! </span>Something went wrong. Please try again later.
+	// 	</div>
+	// )
 
 	const warningmodal = (
 		<div id="alert-1" class="flex bg-yellow-100 text-yellow-700 px-3 py-3 rounded relative" role="alert">
@@ -36,16 +36,13 @@ function SignUp() {
 			email: email, 
 			password: password 
 
-		}).then(response => { dispatch(setUser(response.data));
-			console.log(nowuser.full_name);
-		})
+		}).then(response => {dispatch(setUser(response.data));})
 	}
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 		const users = await axios.get('https://616981a909e030001712c409.mockapi.io/users');
         const userLoggedIn = users.data.find(record => record.email === email);
-
 		userLoggedIn ? setError(warningmodal) : addUser();
     };
 

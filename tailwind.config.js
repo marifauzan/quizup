@@ -4,6 +4,13 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('flowbite/plugin'),
+    require("daisyui")
   ],
+  daisyui: {
+    styled: true,
+    themes: [
+      "light", // first one will be the default theme
+      "cupcake",
+    ],
+  },
 };

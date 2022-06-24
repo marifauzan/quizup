@@ -15,25 +15,13 @@ import Survey from "./pages/Survey";
 function App() {
   const nowuser = useSelector(selectUser);
 
-  // const route = (
-  //   <>
-  //     <Router>
-  //       <Routes>
-  //         <Route path="/Login" element={<Login />} />
-  //         <Route path="/SignUp" element={<SignUp />} />
-  //         <Route path="/" element={<LandingPage />} />
-  //       </Routes>
-  //     </Router>
-  //   </>
-  // );
-
   const LoggedInUser = (
     <>
       <Router>
         <Routes>
           <Route path="/Home" element={<Home />} />
           <Route path="/Login" element={nowuser ? <Navigate to="/Home"/> : <Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SignUp" element={nowuser ? <Navigate to="/Home"/> : <SignUp />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/User" element={<User />}/>
           <Route path="/Survey" element={<Survey />}/>
