@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
