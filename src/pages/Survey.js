@@ -76,7 +76,7 @@ function Survey() {
                 <h3 className="font-bold text-lg text-gray-500">Give us more feedback 🐧</h3>
                 <input type="textarea" className="w-full py-7 border-b-2"></input>
                 <div className="modal-action">
-                <a href="#" className="btn border-none bg-rose-500">Yay!</a>
+                <a href="_blank" className="btn border-none bg-rose-500">Yay!</a>
                 </div>
             </div>
             </div>

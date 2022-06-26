@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { selectUser, setUser } from "../slice/user-slice";
-import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../slice/user-slice";
+import { useDispatch } from "react-redux";
 function SignUp() {
 	const [fullname, setFullName] = useState('');
 	const [username, setUsername] = useState('');
@@ -11,7 +11,7 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const dispatch = useDispatch();
-    const nowuser = useSelector(selectUser);
+    // const nowuser = useSelector(selectUser);
 
 	// const errormodal = (
 	// 	<div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
