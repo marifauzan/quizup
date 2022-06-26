@@ -1,0 +1,125 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  .header-1{
+    margin-top: 50px;
+    border: 1px solid black;
+    height: 100px;
+    background-color: #4D269C;
+  }
+  
+  .paraf-1{
+    color: white;
+    font-size: 60px;
+    text-align: center;
+  }
+  
+  .paraf-2{
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  .paraf-3{
+    text-align: center;
+    font-size: 17px;
+  }
+  .tengah-1{
+    height: 400px
+  }
+  
+  .skor{
+    top: 280px;
+    position: absolute;
+    width: 235px;
+    height: 235px;
+    left: 300px;
+    background: #BDA3F5;
+    border-radius: 150px;
+    padding-top: 50px;
+  }
+  .skor h1{
+    font-size: 60px;
+    text-align: center;
+  }
+  
+  .skor p{
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .kecepatan{
+    position: absolute;
+    width: 523px;
+    height: 82px;
+    left: 616px;
+    top: 315px;
+    background: #BDA3F5;
+    border-radius: 10px;
+  }
+  .kecepatan h1{
+    font-size: 30px;
+    text-align: center;
+  }
+  .kecepatan p{
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .tinggi{
+    position: absolute;
+    width: 235px;
+    height: 69px;
+    left: 301px;
+    top: 533px;
+    background: #BDA3F5;
+    border-radius: 10px;
+  }
+  
+  .tinggi h1{
+    font-size: 40px;
+    text-align: center;
+    padding-top: 5px;
+  }
+  
+  .total-waktu{
+    position: absolute;
+    width: 523px;
+    height: 82px;
+    left: 616px;
+    top: 427px;
+    background: #BDA3F5;
+    border-radius: 10px;
+  }
+  
+  .total-waktu p{
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .total-waktu h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .footer{
+    margin-top: 30px;
+  }
+  
+  .tombol-1{
+    position: absolute;
+    background: #4D269C;
+    left: 150px;
+    font-size: 20px;
+  }
+  
+  .tombol-2{
+    position: absolute;
+    background: #4D269C;
+    left: 1200px;
+    font-size: 20px;
+  }
+  
