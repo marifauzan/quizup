@@ -11,8 +11,8 @@ function Sidebar() {
   };
 
   return (
-    <aside className="w-60 relative h-screen sticky top-0" aria-label="Sidebar">
-      <div className="overflow-y-auto py-4 px-3 bg-white drop-shadow-md">
+    <aside className="w-60 relative h-screen top-0" aria-label="Sidebar">
+      <div className="overflow-y-auto py-4 px-3 bg-white drop-shadow-md h-screen">
         <ul className="space-y-2">
           <li>
             <a

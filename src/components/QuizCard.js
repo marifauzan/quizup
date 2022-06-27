@@ -1,6 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function QuizCard({ id, title, description, images }) {
+  const [questions, setQuestions] = useState([]);
+  const [questionByIdQuiz, setQuestionByIdQuiz] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://616981a909e030001712c409.mockapi.io/questions/")
+      .then((response) => {
+        setQuestions(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const dataQuestions = questions.filter(
+      (question) => question.id_quiz === id
+    );
+    console.log(dataQuestions);
+    setQuestionByIdQuiz(dataQuestions);
+    localStorage.setItem("QuestionByIdQuiz", JSON.stringify(dataQuestions));
+  }, [questions, id]);
+
   return (
     <div class="bg-white drop-shadow-md w-52 h-70 rounded-lg mr-4 mb-4">
       <a href="_blank">
@@ -13,6 +37,7 @@ function QuizCard({ id, title, description, images }) {
           </h5>
         </a>
         <p class="mb-3 text-xs text-gray-700">{description}</p>
+        {/* bintang */}
         <a
           href={`/quiz/${id}`}
           class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
