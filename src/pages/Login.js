@@ -73,7 +73,7 @@ function Login() {
                     <button type="submit" className="block w-full bg-rose-400 hover:bg-purple-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
                     onClick={handleSubmit}
                     >Login</button>
-                    <Link to="/SignUp" className="text-sm ml-2 hover:text-rose-800 cursor-pointer underline decoration-pink-500" >Sign Up</Link>
+                    <Link to="/sign-up" className="text-sm ml-2 hover:text-rose-800 cursor-pointer underline decoration-pink-500" >Sign Up</Link>
                 </form>           
             </div>
         </div>

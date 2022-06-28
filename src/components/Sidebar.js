@@ -107,9 +107,9 @@ function Sidebar() {
             </a>
           </li>
           <li>
-            <a
-              href="_blank"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200"
+            <button
+              onClick={handleLogout}
+              className="flex items-center w-full text-left p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200"
             >
               <svg
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
@@ -125,11 +125,11 @@ function Sidebar() {
               </svg>
               <span
                 className=" text-gray-500 flex-1 ml-3 whitespace-nowrap"
-                onClick={handleLogout}
+                
               >
                 Logout
               </span>
-            </a>
+            </button>
           </li>
         </ul>
         <div
@@ -139,7 +139,7 @@ function Sidebar() {
         >
           <div className="flex items-center mb-3">
             <span className="text-blue-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded bg-white">
-              Beta
+              Quizup
             </span>
           </div>
           <p className="mb-3 text-sm text-white">
