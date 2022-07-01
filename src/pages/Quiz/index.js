@@ -1,5 +1,5 @@
-
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -96,10 +96,10 @@ export default function Quiz() {
           <div className="text-sm">00:00:00</div>
         </div>
         <div className="flex flex-col items-center self-center w-10/12 mt-8">
-          <div className="text-base text-xs font-bold text-center mb-2">
+          <div className="text-base font-bold text-center mb-2">
             Question {currentQuestion}/{questions.length}
           </div>
-          <div className="h-28 text-base text-sm font-normal text-center mb-8">
+          <div className="h-28 text-base font-normal text-center mb-8">
             {questions[currentQuestion - 1].question}
           </div>
           <div className="flex flex-col gap-2 w-2/4">
@@ -132,7 +132,6 @@ export default function Quiz() {
                 </label>
               </div>
             ))}
-
           </div>
           {currentQuestion === questions.length ? (
             <button
