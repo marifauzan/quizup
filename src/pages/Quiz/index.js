@@ -74,6 +74,7 @@ export default function Quiz() {
         (choice) => choice.id_question === questions[currentQuestion - 1].id
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuestion, choices]);
 
   return (
