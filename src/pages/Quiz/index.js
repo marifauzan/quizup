@@ -1,5 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -79,12 +79,13 @@ export default function Quiz() {
   return (
     <div className="container p-8">
       <div className="flex flex-col">
-        <div className="w-full dark:bg-yellow-100 rounded-full h-1.5 bg-yellow-100">
+        <div className="w-full dark:bg-sky-100 rounded-full h-1.5 bg-sky-100">
           <div
-            className="dark:bg-yellow-500 h-1.5 rounded-full bg-yellow-500"
+            className="dark:bg-sky-500 h-1.5 rounded-full bg-sky-500"
             style={{ width: `${(currentQuestion / questions.length) * 100}%` }}
           ></div>
         </div>
+
         <div className="flex flex-row justify-between mt-6">
           <div
             className="text-white bg-blue-700 hover:bg-blue-800 cursor-pointer rounded text-sm px-5 py-2.5 text-center"
@@ -92,13 +93,13 @@ export default function Quiz() {
           >
             Previous
           </div>
-          <div>00:00:00</div>
+          <div className="text-sm">00:00:00</div>
         </div>
         <div className="flex flex-col items-center self-center w-10/12 mt-8">
-          <div className="text-base font-bold text-center mb-2">
+          <div className="text-base text-xs font-bold text-center mb-2">
             Question {currentQuestion}/{questions.length}
           </div>
-          <div className="text-base font-normal text-center mb-8">
+          <div className="h-28 text-base text-sm font-normal text-center mb-8">
             {questions[currentQuestion - 1].question}
           </div>
           <div className="flex flex-col gap-2 w-2/4">
@@ -131,6 +132,7 @@ export default function Quiz() {
                 </label>
               </div>
             ))}
+
           </div>
           {currentQuestion === questions.length ? (
             <button
