@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 
 function QuizCard({ id, title, description, images }) {
   const [questions, setQuestions] = useState([]);
-  //const [questionByIdQuiz, setQuestionByIdQuiz] = useState([]);
+
+  localStorage.setItem("data_answer", JSON.stringify([]));
+
+  // const [questionByIdQuiz, setQuestionByIdQuiz] = useState([]);
 
   useEffect(() => {
     axios
@@ -21,7 +24,6 @@ function QuizCard({ id, title, description, images }) {
       (question) => question.id_quiz === id
     );
     console.log(dataQuestions);
-    //setQuestionByIdQuiz(dataQuestions);
     localStorage.setItem("QuestionByIdQuiz", JSON.stringify(dataQuestions));
   }, [questions, id]);
 
