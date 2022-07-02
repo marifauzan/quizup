@@ -2,48 +2,60 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { selectUser, setUser } from "../slice/user-slice";
-import { useSelector, useDispatch } from "react-redux";
+import {  setUser } from "../slice/user-slice";
+import { useDispatch } from "react-redux";
 
-function Login() {
-    //const [error, setError] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const nowuser = useSelector(selectUser);
+function Login():JSX.Element {
+    const [email, setEmail] = useState<String>('');
+    const [password, setPassword] = useState<String>('');
     const dispatch = useDispatch();
-    const [error, setError] = useState('');
+    const [error, setError] = useState<JSX.Element>();
 
-    const errormodal = (
-		<div id="alert-1" class="flex bg-red-100 text-red-700 px-3 py-3 rounded relative" role="alert">
-			<span class="font-medium">Incorrect email and password. </span>
+    const errormodal: JSX.Element = (
+		<div id="alert-1" className="flex bg-red-100 text-red-700 px-3 py-3 rounded relative" role="alert">
+			<span className="font-medium">Incorrect email and password. </span>
 		</div>
 	)
 
-    const handleSubmit = async (e) => {
+    interface userData {
+        email: String,
+        username: String,
+        full_name: String,
+        password: String,
+        history: [
+            {
+                id_quiz: number,
+                score: number
+            }
+        ],
+        id: number
+    }
+
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();  
         const users = await axios.get('https://616981a909e030001712c409.mockapi.io/users');
-        const userLoggedIn = users.data.find(record => (record.email === email  && record.password === password));
+        console.log(users);
+        const userLoggedIn: userData = users.data.find((record: { email: String; password: String; }) => (record.email === email  && record.password === password));
         userLoggedIn ? dispatch(setUser(userLoggedIn)) : setError(errormodal);
-        console.log(nowuser);
-        
+    
     };
 
         return (
             <div>
                 {error}
             <div className="h-screen md:flex">
-            <div
-                className="relative overflow-hidden md:flex w-1/2 bg-rose-400 i justify-around items-center hidden">
-                <div>
-                    <h1 className="text-white font-bold text-4xl font-sans">Quizup</h1>
-                    <p className="text-white mt-1">Education is not the learning of facts, but training the mind to think.</p>
-                    <Link to="/" type="submit" className="text-center block w-28 bg-white text-rose-500 mt-4 py-2 rounded-2xl font-bold mb-2">Back</Link>
+                <div
+                    className="relative overflow-hidden md:flex w-1/2 bg-rose-400 i justify-around items-center hidden">
+                    <div>
+                        <h1 className="text-white font-bold text-4xl font-sans">Quizup</h1>
+                        <p className="text-white mt-1">Education is not the learning of facts, but training the mind to think.</p>
+                        <Link to="/" type="submit" className="text-center block w-28 bg-white text-rose-500 mt-4 py-2 rounded-2xl font-bold mb-2">Back</Link>
+                    </div>
+                    <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+                    <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+                    <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+                    <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
                 </div>
-                <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-                <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-                <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-                <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-            </div>
             <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
                 <form className="bg-white">
                     <h1 className="text-gray-800 font-bold text-2xl mb-1">Hello!</h1>

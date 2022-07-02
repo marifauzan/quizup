@@ -3,11 +3,11 @@ import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { questions } from "../data/SurveyQuestion";
 
-function Survey() {
-  const [currentQ, setCurrentQ] = useState(0);
-  const [score, setScore] = useState(0);
-  const [choice, setChoice] = useState(5);
-  const [finish, setFinish] = useState("");
+function Survey(): JSX.Element {
+  const [currentQ, setCurrentQ] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
+  const [choice, setChoice] = useState<string>("5");
+  const [finish, setFinish] = useState<string>("");
 
   const handleNext = () => {
     const nextQues = currentQ + 1;
@@ -45,7 +45,7 @@ function Survey() {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={1}
-                onClick={(e) => setChoice(e.target.value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
               />
               <input
                 type="radio"
@@ -53,7 +53,7 @@ function Survey() {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={2}
-                onClick={(e) => setChoice(e.target.value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
               />
               <input
                 type="radio"
@@ -61,7 +61,7 @@ function Survey() {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={3}
-                onClick={(e) => setChoice(e.target.value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
               />
               <input
                 type="radio"
@@ -69,7 +69,7 @@ function Survey() {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={4}
-                onClick={(e) => setChoice(e.target.value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
               />
               <input
                 type="radio"
@@ -77,15 +77,15 @@ function Survey() {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={5}
-                onClick={(e) => setChoice(e.target.value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
               />
             </div>
           </div>
-          <button onClick={finish ? undefined : handleNext} className="">
+          <button onClick={finish ? undefined : handleNext} disabled={finish ? true : false}>
             <label
               htmlFor={finish}
               className="px-6 py-1 bg-rose-500 text-white border-none rounded-xl mt-16 btn modal-button"
-              disabled={finish}
+             
             >
               {finish !== "" ? "Already responded" : "next"}
             </label>
@@ -112,17 +112,17 @@ function Survey() {
       </div>
 
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-      <label for="my-modal-4" className="modal cursor-pointer">
-        <label className="modal-box relative" for="">
+      <label htmlFor="my-modal-4" className="modal cursor-pointer">
+        <label className="modal-box relative" htmlFor="">
           <h3 className="text-lg font-bold">We love hearing from you!❤️</h3>
-          <p className="py-4">Your saticfaction rate : {(score / 5) * 20}%</p>
+          <p className="py-4">Your satisfaction rate : {(score / 5) * 20}%</p>
           <p className="py-4">
             Thank you for reaching out and providing us with valuable feedback.
             Thank you for taking time out of your day to leave us this super
             kind review.
           </p>
           <div className="modal-action">
-            <label for="my-modal-4" className="btn border-none bg-rose-500">
+            <label htmlFor="my-modal-4" className="btn border-none bg-rose-500">
               Yay!
             </label>
           </div>

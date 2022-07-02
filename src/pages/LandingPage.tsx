@@ -3,13 +3,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LandingSideBar from "../components/LandingSidebar";
 import QuizCard from "../components/QuizCard";
-function LandingPage() {
-  //const nowuser = useSelector(selectUser);
-  const [quiz, setQuiz] = useState([]);
+function LandingPage():JSX.Element {
+
+  interface quizData {
+    description: string,
+    endAt: null,
+    id: string,
+    images: string,
+    rating: number,
+    slug: string,
+    startAt: null,
+    title: string
+  };
+
+ const [quiz, setQuiz] = useState<quizData>()
+
 
   useEffect(() => {
     axios
-      .get("https://616981a909e030001712c409.mockapi.io/quiz/1")
+      .get<quizData>("https://616981a909e030001712c409.mockapi.io/quiz/1")
       .then((response) => {
         setQuiz(response.data);
       })
@@ -27,7 +39,7 @@ function LandingPage() {
         💎 We help you make a change and feel stronger. Try Quizup anywhere, at any time!
         </p>
         
-        {quiz.length === 0 ? (
+        {!quiz ?  (
             <svg
               role="status"
               className="w-8 h-8 ml-20 mt-20 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -45,15 +57,17 @@ function LandingPage() {
               />
             </svg>
           ) : (
+            
             <div className="mt-10 pl-9 grid grid-cols-4 grid-flow-row gap-3">
             <div className="indicator">
+              
             <span className="indicator-item mt-10 mr-8 px-4 py-5 font-semibold badge badge-primary bg-gradient-to-r from-purple-500 to-sky-500 border-none drop-shadow-md">try me</span>
                 <QuizCard
-                    key={quiz.id}
-                    id={quiz.id}
-                    title={quiz.title}
-                    description={quiz.description}
-                    images={quiz.images}
+                    key={quiz?.id}
+                    id={quiz?.id}
+                    title={quiz?.title}
+                    description={quiz?.description}
+                    images={quiz?.images}
                 />
             </div>
             <div className="bg-blue-50 drop-shadow-md w-52 h-70 rounded-lg mb-4 grid place-items-center">

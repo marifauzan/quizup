@@ -12,12 +12,12 @@ function Sidebar() {
 
   return (
     <aside className="w-60 relative h-screen top-0" aria-label="Sidebar">
-      <div className="overflow-y-auto py-4 px-3 bg-white drop-shadow-md h-screen">
-        <ul className="space-y-2">
+      <div className="overflow-y-auto py-4 px-6 bg-white drop-shadow-md h-screen">
+        <ul className="space-y-4">
           <li>
             <a
               href="_blank"
-              className="flex items-center mt-5 mb-6 text-base font-normal text-gray-900 rounded-lg "
+              className="flex items-center mt-9 mb-6 text-base font-normal text-gray-900 rounded-lg "
             >
               <span className="ml-3 font-black text-gray-700 text-lg">
                 QUIZUP
@@ -101,15 +101,15 @@ function Sidebar() {
               <span className="text-gray-500 flex-1 ml-3 whitespace-nowrap">
                 Survey
               </span>
-              <span className="inline-flex justify-center items-center px-2 py-1 ml-3 text-xs font-medium text-white bg-purple-700 rounded-full">
+              {/* <span className="inline-flex justify-center items-center px-2 py-1 ml-3 text-xs font-medium text-white bg-purple-700 rounded-full">
                 New
-              </span>
+              </span> */}
             </a>
           </li>
           <li>
             <button
               onClick={handleLogout}
-              className="flex items-center w-full text-left p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200"
+              className="flex items-center w-full text-left p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-200"
             >
               <svg
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
@@ -132,21 +132,7 @@ function Sidebar() {
             </button>
           </li>
         </ul>
-        <div
-          id="dropdown-cta"
-          className="p-4 mt-12 rounded-lg bg-gradient-to-r from-sky-500 to-purple-500"
-          role="alert"
-        >
-          <div className="flex items-center mb-3">
-            <span className="text-blue-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded bg-white">
-              Quizup
-            </span>
-          </div>
-          <p className="mb-3 text-sm text-white">
-            Quizup is designed to train your mind and brain and develop your
-            cognitive abilities. Please use this application wisely.
-          </p>
-        </div>
+        
       </div>
     </aside>
   );

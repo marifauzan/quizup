@@ -4,26 +4,20 @@ import axios from "axios";
 import { useState } from "react";
 import { setUser } from "../slice/user-slice";
 import { useDispatch } from "react-redux";
-function SignUp() {
-	const [fullname, setFullName] = useState('');
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+function SignUp(): JSX.Element {
+	const [fullname, setFullName] = useState<String>('');
+	const [username, setUsername] = useState<String>('');
+	const [email, setEmail] = useState<String>('');
+    const [password, setPassword] = useState<String>('');
+    const [error, setError] = useState<JSX.Element>();
     const dispatch = useDispatch();
-    // const nowuser = useSelector(selectUser);
 
-	// const errormodal = (
-	// 	<div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-	// 		<span class="font-medium">Error! </span>Something went wrong. Please try again later.
-	// 	</div>
-	// )
 
-	const warningmodal = (
-		<div id="alert-1" class="flex bg-yellow-100 text-yellow-700 px-3 py-3 rounded relative" role="alert">
-			<span class="font-medium">Account has already exist. </span> Try Sign In.
-			<button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300" data-dismiss-target="alert-1" aria-label="Close">
-				<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+	const warningmodal: JSX.Element = (
+		<div id="alert-1" className="flex bg-yellow-100 text-yellow-700 px-3 py-3 rounded relative" role="alert">
+			<span className="font-medium">Account has already exist. </span> Try Sign In.
+			<button type="button" className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300" data-dismiss-target="alert-1" aria-label="Close">
+				<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
 			</button>
 		</div>
 	)
@@ -39,10 +33,10 @@ function SignUp() {
 		}).then(response => {dispatch(setUser(response.data));})
 	}
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 		const users = await axios.get('https://616981a909e030001712c409.mockapi.io/users');
-        const userLoggedIn = users.data.find(record => record.email === email);
+        const userLoggedIn = users.data.find((record: { email: String; password: String; }) => record.email === email);
 		userLoggedIn ? setError(warningmodal) : addUser();
     };
 

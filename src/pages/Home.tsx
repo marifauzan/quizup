@@ -5,8 +5,21 @@ import QuizCard from "../components/QuizCard";
 import Sidebar from "../components/Sidebar";
 import { selectUser } from "../slice/user-slice";
 
-function Home() {
-  const [quiz, setQuiz] = useState([]);
+function Home():JSX.Element {
+  interface quizData {
+    description: string,
+    endAt: null,
+    id: string,
+    images: string,
+    rating: number,
+    slug: string,
+    startAt: null,
+    title: string,
+    
+  };
+  
+  
+  const [quiz, setQuiz] = useState<quizData[]>([])
   const nowuser = useSelector(selectUser);
 
   useEffect(() => {
@@ -23,7 +36,6 @@ function Home() {
   return (
     <div className="flex">
       <Sidebar />
-      {console.log(nowuser)}
       <div className="flex overflow-hidden flex-wrap flex-col paragraph px-4 ">
         <h1 className="text-2xl font-bold p-10 border-b-1">
           Welcome, {nowuser.full_name}

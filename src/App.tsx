@@ -15,15 +15,16 @@ import History from "./pages/History";
 import User from "./pages/User";
 import { selectUser } from "./slice/user-slice";
 import Survey from "./pages/Survey";
+import Result from "./pages/Result";
 
-function App() {
+function App():JSX.Element {
   const nowuser = useSelector(selectUser);
 
   const LoggedInUser = (
     <>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={nowuser ? <Home /> : <LandingPage />} />
           <Route
             path="/login"
             element={nowuser ? <Navigate to="/home" /> : <Login />}
@@ -36,6 +37,7 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/history" element={<History />} />
+          <Route path="/result" element={<Result />} />
           <Route
             path="/"
             element={nowuser ? <Navigate to="/home" /> : <LandingPage />}

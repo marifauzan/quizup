@@ -7,18 +7,30 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../slice/user-slice";
 
-function User() {
+declare global {
+  interface Window {
+      alertComponent: () => { 
+        openAlertBox: boolean; 
+        alertBackgroundColor: string; 
+        alertMessage: string; 
+        showAlert(): void; 
+        successIcon: string; 
+        defaultSuccessMessage: string; }
+  }
+}
+
+function User(): JSX.Element {
   const dispatch = useDispatch();
   const nowuser = useSelector(selectUser);
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState<String>("");
+  const [name, setName] = useState<String>("");
 
   const handleLogout = () => {
     dispatch(setUser(null));
     window.location.href = "/";
   };
 
-  const handleUser = (e) => {
+  const handleUser = (e: React.SyntheticEvent) => {
     e.preventDefault();
     axios
       .put(`https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`, {
@@ -34,11 +46,14 @@ function User() {
         ) {
           window.alert("Username and password changed.");
         }
-        document.getElementById("edituser-form").reset();
+
+        const resetForm = document.getElementById('edituser-form') as HTMLFormElement;
+        if(resetForm)
+            resetForm.reset();
       });
   };
 
-  const deleteUser = (e) => {
+  const deleteUser = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     if (window.confirm("Are you sure want to delete this account?")) {
@@ -54,13 +69,13 @@ function User() {
       openAlertBox: false,
       alertBackgroundColor: "",
       alertMessage: "",
-      showAlert(type) {
+      showAlert() {
         this.openAlertBox = true;
         this.alertBackgroundColor = "bg-green-500";
         this.alertMessage = `${this.successIcon} ${this.defaultSuccessMessage}`;
         this.openAlertBox = true;
       },
-      successIcon: `<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-2 text-white"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+      successIcon: `<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 mr-2 text-white"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
       defaultSuccessMessage: `This alert contains success message.`,
     };
   };
@@ -92,9 +107,9 @@ function User() {
 
         <div className="ml-24">
           <form onSubmit={handleUser} className="px-5 py-6" id="edituser-form">
-            <div class="mb-4">
+            <div className="mb-4">
               <label className="input-group">
-                <span class="label-text w-32">Name</span>
+                <span className="label-text w-32">Name</span>
                 <input
                   onChange={(e) =>
                     e.target.value !== ""
@@ -107,16 +122,16 @@ function User() {
                 />
               </label>
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <label className="input-group">
-                <span class="label-text w-32">New Password</span>
+                <span className="label-text w-32">New Password</span>
                 <input
                   onChange={(e) =>
                     e.target.value
                       ? setPassword(e.target.value)
                       : setPassword(nowuser.password)
                   }
-                  class="input input-bordered w-96"
+                  className="input input-bordered w-96"
                   type="password"
                   id="inline-password"
                   placeholder="Strong password"
@@ -124,7 +139,7 @@ function User() {
                 />
               </label>
             </div>
-            <div class="mb-8">
+            <div className="mb-8">
               <button
                 type="submit"
                 className="block w-1/4 bg-blue-500 py-2 px-5 rounded-xl text-white text-sm font-semibold mt-6 hover:bg-blue-600 "
