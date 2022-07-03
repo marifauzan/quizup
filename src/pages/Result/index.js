@@ -1,22 +1,39 @@
 import "./index.css";
 import { useSelector } from "react-redux";
-import { selectId, selectScore } from "../../slice/user-slice";
+import { selectId, selectScore, selectUser } from "../../slice/user-slice";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Result() {
   const id_quiz = useSelector(selectId);
   const score = useSelector(selectScore);
+  const nowuser = useSelector(selectUser);
   const [status, setStatus] = useState([]);
+  //const [index, setIndex] = useState();
+  //const currentHistory = nowuser.history;
 
+  // useEffect(() => {
+  //   // eslint-disable-next-line array-callback-return
+  //   currentHistory.forEach((his, index) => {
+
+  //     if (his.id_quiz === id_quiz) {
+  //       currentHistory[index] = score
+        
+  //     }
+  //     console.log(nowuser.history)
+  //     console.log(his.id_quiz, id_quiz)
+  //   }
+  //   ); 
+  // })
 
   useEffect(() => {
+    //console.log(currentHistory)
     axios
     .put(`https://616981a909e030001712c409.mockapi.io/users/${id_quiz}`, {
-      history : [
+      "history": [
         {
-            "id_quiz": id_quiz,
-            "score": score
+          "id_quiz": id_quiz,
+          "score": score
         }
       ]
     })
@@ -31,7 +48,7 @@ function Result() {
         }
       }
     )
-  }, [id_quiz, score])
+  }, [id_quiz, score, nowuser])
 
   
   const Excellent = () => {
