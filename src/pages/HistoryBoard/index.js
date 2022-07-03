@@ -6,8 +6,10 @@ import { selectUser } from "../../slice/user-slice";
 
 export default function HistoryBoard() {
   const [quiz, setQuiz] = useState([]);
-  const nowuser = useSelector(selectUser).history;
-  console.log(nowuser);
+  const [users, setUsers] = useState([]);
+
+  const id = useSelector(selectUser).id;
+  //console.log(nowuser);
 
   const getDataQuizById = (id_quiz) => {
     const foundQuizById = quiz.filter((quiz) => quiz.id === id_quiz)[0];
@@ -35,6 +37,18 @@ export default function HistoryBoard() {
 
   useEffect(() => {
     axios
+    .get(`https://616981a909e030001712c409.mockapi.io/users/${id}`)
+    .then((response) => {
+      setUsers(response.data.history);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }, [id])
+
+  useEffect(() => {
+
+    axios
       .get("https://616981a909e030001712c409.mockapi.io/quiz/")
       .then((response) => {
         setQuiz(response.data);
@@ -52,7 +66,7 @@ export default function HistoryBoard() {
           History Score
         </h1>
         <div className="p-9 flex flex-col">
-          {!nowuser ? (
+          {!users ? (
             <svg
               role="status"
               className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -71,7 +85,7 @@ export default function HistoryBoard() {
             </svg>
           ) : (
             <>
-              {nowuser.map((data, index) => (
+              {users.map((data, index) => (
                 <div
                   key={index}
                   className="flex flex-row bg-white drop-shadow-md w-full rounded-lg mb-6"
