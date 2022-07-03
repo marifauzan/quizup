@@ -33,14 +33,12 @@ export default function Quiz() {
         }
       });
     });
-    console.log("Score: ", result);
     return result;
   };
 
   const onChangeRadio = (value, index) => {
     let answer = JSON.parse(localStorage.getItem("data_answer"));
     answer[index - 1] = JSON.parse(value);
-    console.log(JSON.parse(value));
     localStorage.setItem("data_answer", JSON.stringify(answer));
 
     const convertValue = JSON.parse(value);
@@ -64,7 +62,7 @@ export default function Quiz() {
         setChoices(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, []);
 

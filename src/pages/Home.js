@@ -16,14 +16,13 @@ function Home() {
         setQuiz(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, []);
 
   return (
     <div className="flex">
       <Sidebar />
-      {console.log(nowuser)}
       <div className="flex overflow-hidden flex-wrap flex-col paragraph px-4 ">
         <h1 className="text-2xl font-bold p-10 border-b-1">
           Welcome, {nowuser.full_name}

@@ -13,10 +13,8 @@ function Survey() {
     const nextQues = currentQ + 1;
     setCurrentQ(nextQues);
     setScore(parseInt(choice) + score);
-    console.log(score);
     if (nextQues >= questions.length) {
       setCurrentQ(0);
-      console.log(questions.length);
       setFinish("my-modal-4");
     }
   };
