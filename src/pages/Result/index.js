@@ -9,28 +9,12 @@ function Result() {
   const score = useSelector(selectScore);
   const nowuser = useSelector(selectUser);
   const [status, setStatus] = useState([]);
-  //const [index, setIndex] = useState();
-  //const currentHistory = nowuser.history;
-
-  // useEffect(() => {
-  //   // eslint-disable-next-line array-callback-return
-  //   currentHistory.forEach((his, index) => {
-
-  //     if (his.id_quiz === id_quiz) {
-  //       currentHistory[index] = score
-        
-  //     }
-  //     console.log(nowuser.history)
-  //     console.log(his.id_quiz, id_quiz)
-  //   }
-  //   ); 
-  // })
 
   useEffect(() => {
-    //console.log(currentHistory)
+
     axios
-    .put(`https://616981a909e030001712c409.mockapi.io/users/${id_quiz}`, {
-      "history": [
+    .put(`https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`, {
+      history: [
         {
           "id_quiz": id_quiz,
           "score": score
@@ -41,10 +25,13 @@ function Result() {
       () => {
         if (score > 75) {
           setStatus(Excellent());
+          console.log(nowuser.history);
         } else if (score > 50 ) {
           setStatus(Notbad());
+          console.log(nowuser.history);
         } else {
           setStatus(Poor());
+          console.log(nowuser.history);
         }
       }
     )
