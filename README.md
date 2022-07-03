@@ -41,7 +41,7 @@ by displaying the answer directly to the user after the user selects the answer.
 
 **4. History Score**<br />
 This feature is used to view data related to the quizzes user has worked on and also their scores.
-![]()
+![](https://github.com/yusmasv/quizup/blob/develop/documentation/history%20board.png)
 
 **5. Survey**<br />
 A form of where user can reaching out and providing us with valuable feedback.
@@ -57,5 +57,4 @@ User can edit their details, such as their name and password, and also delete th
 3. Mock up APIs and generate custom database with [MockAPI](https://mockapi.io/)
 4. [Redux Toolkit](https://redux-toolkit.js.org/) and [React Redux](https://react-redux.js.org/) as state management
 5. [Tailwind CSS](https://tailwindcss.com/) and [Daisy UI](https://daisyui.com/) component library for styling 🌻
-6. [React Testing Library](https://testing-library.com/) for testing
-7. Deployed in Netlify, try Quizup [here](https://develop-quizup.netlify.app/) 🚀
+6. Deployed in Netlify, try Quizup [here](https://develop-quizup.netlify.app/) 🚀
