@@ -61,6 +61,7 @@ function Home() {
                 title={quiz.title}
                 description={quiz.description}
                 images={quiz.images}
+                rating={quiz.rating}
               />
             ))
           )}
