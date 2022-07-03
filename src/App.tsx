@@ -11,10 +11,10 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
-import History from "./pages/History";
 import User from "./pages/User";
 import { selectUser } from "./slice/user-slice";
 import Survey from "./pages/Survey";
+import HistoryBoard from "./pages/HistoryBoard";
 
 function App() {
   const nowuser = useSelector(selectUser);
@@ -35,7 +35,7 @@ function App() {
           <Route path="/quiz/:id" element={<Quiz />} />
           <Route path="/user" element={<User />} />
           <Route path="/survey" element={<Survey />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/history" element={<HistoryBoard />} />
           <Route
             path="/"
             element={nowuser ? <Navigate to="/home" /> : <LandingPage />}
