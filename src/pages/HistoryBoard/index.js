@@ -7,6 +7,7 @@ import { selectUser } from "../../slice/user-slice";
 export default function HistoryBoard() {
   const [quiz, setQuiz] = useState([]);
   const nowuser = useSelector(selectUser).history;
+  console.log(nowuser);
 
   const getDataQuizById = (id_quiz) => {
     const foundQuizById = quiz.filter((quiz) => quiz.id === id_quiz)[0];

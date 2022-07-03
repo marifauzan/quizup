@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setId } from "../slice/user-slice";
 
-function QuizCard({ id, title, description, images, rating }) {
+function QuizCard({ id, title, description, images }) {
   const [questions, setQuestions] = useState([]);
-
+  const dispatch = useDispatch();
   localStorage.setItem("data_answer", JSON.stringify([]));
 
   // const showRating = () => {
@@ -17,10 +19,12 @@ function QuizCard({ id, title, description, images, rating }) {
       .get("https://616981a909e030001712c409.mockapi.io/questions/")
       .then((response) => {
         setQuestions(response.data);
+        dispatch(setId(id));
       })
       .catch((error) => {
         console.error(error);
       });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
