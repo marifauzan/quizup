@@ -1,5 +1,5 @@
 import React from "react";
-import { setUser } from "../slice/user-slice";
+import { setUser } from "../../slice/user-slice";
 import { useDispatch } from "react-redux";
 function Sidebar() {
   //const nowuser = useSelector(selectUser);
@@ -123,16 +123,12 @@ function Sidebar() {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span
-                className=" text-gray-500 flex-1 ml-3 whitespace-nowrap"
-                
-              >
+              <span className=" text-gray-500 flex-1 ml-3 whitespace-nowrap">
                 Logout
               </span>
             </button>
           </li>
         </ul>
-        
       </div>
     </aside>
   );

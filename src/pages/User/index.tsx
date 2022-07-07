@@ -1,21 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Sidebar from "../components/Sidebar";
-import { selectUser } from "../slice/user-slice";
+import Sidebar from "../../parts/Sidebar";
+import { selectUser } from "../../slice/user-slice";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../slice/user-slice";
+import { setUser } from "../../slice/user-slice";
 
 declare global {
   interface Window {
-      alertComponent: () => { 
-        openAlertBox: boolean; 
-        alertBackgroundColor: string; 
-        alertMessage: string; 
-        showAlert(): void; 
-        successIcon: string; 
-        defaultSuccessMessage: string; }
+    alertComponent: () => {
+      openAlertBox: boolean;
+      alertBackgroundColor: string;
+      alertMessage: string;
+      showAlert(): void;
+      successIcon: string;
+      defaultSuccessMessage: string;
+    };
   }
 }
 
@@ -47,9 +48,10 @@ function User(): JSX.Element {
           window.alert("Username and password changed.");
         }
 
-        const resetForm = document.getElementById('edituser-form') as HTMLFormElement;
-        if(resetForm)
-            resetForm.reset();
+        const resetForm = document.getElementById(
+          "edituser-form"
+        ) as HTMLFormElement;
+        if (resetForm) resetForm.reset();
       });
   };
 

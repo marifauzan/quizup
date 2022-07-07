@@ -39,7 +39,6 @@ export default function Quiz() {
       });
     });
 
-    console.log("Score: ", result);
     dispatch(setScore(result));
     setFinish(true);
   };

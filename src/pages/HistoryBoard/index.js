@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../parts/Sidebar";
 import { selectUser } from "../../slice/user-slice";
 
 export default function HistoryBoard() {
@@ -9,7 +9,6 @@ export default function HistoryBoard() {
   const [users, setUsers] = useState([]);
 
   const id = useSelector(selectUser).id;
-  //console.log(nowuser);
 
   const getDataQuizById = (id_quiz) => {
     const foundQuizById = quiz.filter((quiz) => quiz.id === id_quiz)[0];
@@ -37,17 +36,16 @@ export default function HistoryBoard() {
 
   useEffect(() => {
     axios
-    .get(`https://616981a909e030001712c409.mockapi.io/users/${id}`)
-    .then((response) => {
-      setUsers(response.data.history);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }, [id])
+      .get(`https://616981a909e030001712c409.mockapi.io/users/${id}`)
+      .then((response) => {
+        setUsers(response.data.history);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
 
   useEffect(() => {
-
     axios
       .get("https://616981a909e030001712c409.mockapi.io/quiz/")
       .then((response) => {

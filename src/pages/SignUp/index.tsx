@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { setUser } from "../slice/user-slice";
+import { setUser } from "../../slice/user-slice";
 import { useDispatch } from "react-redux";
 function SignUp(): JSX.Element {
   const [fullname, setFullName] = useState<String>("");

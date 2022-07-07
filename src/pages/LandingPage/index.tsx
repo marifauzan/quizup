@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LandingSideBar from "../components/LandingSidebar";
-import QuizCard from "../components/QuizCard";
+import LandingSideBar from "../../parts/LandingSidebar";
+import QuizCard from "../../components/QuizCard";
 function LandingPage(): JSX.Element {
   interface quizData {
     description: string;
