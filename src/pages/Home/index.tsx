@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import QuizCard from "../components/QuizCard";
-import Sidebar from "../components/Sidebar";
-import { selectUser } from "../slice/user-slice";
+import QuizCard from "../../components/QuizCard";
+import Sidebar from "../../parts/Sidebar";
+import { selectUser } from "../../slice/user-slice";
 
 function Home(): JSX.Element {
   interface quizData {

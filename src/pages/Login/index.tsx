@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { setUser } from "../slice/user-slice";
+import { setUser } from "../../slice/user-slice";
 import { useDispatch } from "react-redux";
 
 function Login(): JSX.Element {
@@ -40,7 +40,6 @@ function Login(): JSX.Element {
     const users = await axios.get(
       "https://616981a909e030001712c409.mockapi.io/users"
     );
-    console.log(users);
     const userLoggedIn: userData = users.data.find(
       (record: { email: String; password: String }) =>
         record.email === email && record.password === password

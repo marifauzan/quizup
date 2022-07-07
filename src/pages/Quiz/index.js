@@ -39,7 +39,6 @@ export default function Quiz() {
       });
     });
 
-    console.log("Score: ", result);
     dispatch(setScore(result));
     setFinish(true);
   };
@@ -104,13 +103,12 @@ export default function Quiz() {
               >
                 Previous
               </div>
-              <div className="text-sm">00:00:00</div>
-            </div>
-            <div className="flex flex-col items-center self-center w-10/12 mt-8">
               <div className="text-sm font-bold text-center mb-2">
                 Question {currentQuestion}/{questions.length}
               </div>
-              <div className="h-28 text-sm font-normal text-center mb-8">
+            </div>
+            <div className="flex flex-col items-center self-center w-9/12 mt-8">
+              <div className="h-28 text-4xl font-bold text-center mb-10 leading-normal">
                 {questions[currentQuestion - 1].question}
               </div>
               <div className="flex flex-col gap-2 w-2/4">

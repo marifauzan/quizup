@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setId } from "../slice/user-slice";
+import { setId } from "../../slice/user-slice";
 
 function QuizCard({ id, title, description, images }) {
   const [questions, setQuestions] = useState([]);

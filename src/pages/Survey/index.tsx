@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../parts/Sidebar";
 import { useState } from "react";
-import { questions } from "../data/SurveyQuestion";
+import { questions } from "../../data/SurveyQuestion";
 
 function Survey(): JSX.Element {
   const [currentQ, setCurrentQ] = useState<number>(0);
@@ -43,7 +43,9 @@ function Survey(): JSX.Element {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={1}
-                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) =>
+                  setChoice((e.target as HTMLInputElement).value)
+                }
               />
               <input
                 type="radio"
@@ -51,7 +53,9 @@ function Survey(): JSX.Element {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={2}
-                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) =>
+                  setChoice((e.target as HTMLInputElement).value)
+                }
               />
               <input
                 type="radio"
@@ -59,7 +63,9 @@ function Survey(): JSX.Element {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={3}
-                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) =>
+                  setChoice((e.target as HTMLInputElement).value)
+                }
               />
               <input
                 type="radio"
@@ -67,7 +73,9 @@ function Survey(): JSX.Element {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={4}
-                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) =>
+                  setChoice((e.target as HTMLInputElement).value)
+                }
               />
               <input
                 type="radio"
@@ -75,15 +83,19 @@ function Survey(): JSX.Element {
                 name="rating"
                 className="mask mask-star-2 bg-rose-400"
                 value={5}
-                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => setChoice((e.target as HTMLInputElement).value)}
+                onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) =>
+                  setChoice((e.target as HTMLInputElement).value)
+                }
               />
             </div>
           </div>
-          <button onClick={finish ? undefined : handleNext} disabled={finish ? true : false}>
+          <button
+            onClick={finish ? undefined : handleNext}
+            disabled={finish ? true : false}
+          >
             <label
               htmlFor={finish}
               className="px-6 py-1 bg-rose-500 text-white border-none rounded-xl mt-16 btn modal-button"
-             
             >
               {finish !== "" ? "Already responded" : "next"}
             </label>
