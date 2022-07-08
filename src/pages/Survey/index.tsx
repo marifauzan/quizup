@@ -146,9 +146,7 @@ function Survey(): JSX.Element {
           </h3>
           <input type="textarea" className="w-full py-7 border-b-2"></input>
           <div className="modal-action">
-            <a href="_blank" className="btn border-none bg-rose-500">
-              Yay!
-            </a>
+            <button className="btn border-none bg-rose-500">Yay!</button>
           </div>
         </div>
       </div>

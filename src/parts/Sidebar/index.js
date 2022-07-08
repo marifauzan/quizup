@@ -16,7 +16,7 @@ function Sidebar() {
         <ul className="space-y-4">
           <li>
             <a
-              href="_blank"
+              href="/"
               className="flex items-center mt-9 mb-6 text-base font-normal text-gray-900 rounded-lg "
             >
               <span className="ml-3 font-black text-gray-700 text-lg">
