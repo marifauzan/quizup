@@ -11,24 +11,37 @@ function Result() {
   const [status, setStatus] = useState([]);
 
   useEffect(() => {
-    axios
-      .put(`https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`, {
-        history: [
+    if (nowuser) {
+      axios
+        .put(
+          `https://616981a909e030001712c409.mockapi.io/users/${nowuser.id}`,
           {
-            id_quiz: id_quiz,
-            score: score,
-          },
-        ],
-      })
-      .then(() => {
-        if (score > 75) {
-          setStatus(Excellent());
-        } else if (score > 50) {
-          setStatus(Notbad());
-        } else {
-          setStatus(Poor());
-        }
-      });
+            history: [
+              {
+                id_quiz: id_quiz,
+                score: score,
+              },
+            ],
+          }
+        )
+        .then(() => {
+          if (score > 75) {
+            setStatus(Excellent());
+          } else if (score > 50) {
+            setStatus(Notbad());
+          } else {
+            setStatus(Poor());
+          }
+        });
+    } else {
+      if (score > 75) {
+        setStatus(Excellent());
+      } else if (score > 50) {
+        setStatus(Notbad());
+      } else {
+        setStatus(Poor());
+      }
+    }
   }, [id_quiz, score, nowuser]);
 
   const Excellent = () => {
@@ -102,7 +115,7 @@ function Result() {
                 </div>
                 <div class="stat-title">Correct</div>
                 <div class="stat-value text-sm font-semibold text-sky-500">
-                  {score / 10}
+                  {score / 20}
                 </div>
                 <div class="stat-desc">answers</div>
               </div>
@@ -125,7 +138,7 @@ function Result() {
                 </div>
                 <div class="stat-title">Wrong</div>
                 <div class="stat-value text-sm font-semibold text-red-500">
-                  {10 - score / 10}
+                  {5 - score / 20}
                 </div>
                 <div class="stat-desc">answers</div>
               </div>

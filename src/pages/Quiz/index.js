@@ -113,18 +113,30 @@ export default function Quiz() {
               </div>
               <div className="flex flex-col gap-2 w-2/4">
                 {choiceById.map((data, index) => (
-                  <div
-                    className={`flex items-center ${
+                  // <div
+                  //   className={`flex items-center ${
+                  //     checkData(data.id, currentQuestion)
+                  //       ? "bg-green-300"
+                  //       : "bg-slate-200"
+                  //   } rounded-lg py-2 px-4 cursor-pointer hover:bg-green-300 active:bg-green-300`}
+                  //   key={index}
+                  //   onChange={(e) =>
+                  //     onChangeRadio(e.target.value, currentQuestion)
+                  //   }
+                  // >
+                  <label
+                    htmlFor={index}
+                    className={` ${
                       checkData(data.id, currentQuestion)
                         ? "bg-green-300"
                         : "bg-slate-200"
-                    } rounded-lg py-2 px-4 cursor-pointer hover:bg-green-300 active:bg-green-300`}
+                    } ml-2 text-sm font-medium text-black cursor-pointer rounded-lg py-2 px-4 hover:bg-green-300 active:bg-green-300`}
                     key={index}
-                    onChange={(e) =>
-                      onChangeRadio(e.target.value, currentQuestion)
-                    }
                   >
                     <input
+                      onChange={(e) =>
+                        onChangeRadio(e.target.value, currentQuestion)
+                      }
                       id={index}
                       type="radio"
                       checked={checkData(data.id, currentQuestion)}
@@ -135,19 +147,15 @@ export default function Quiz() {
                       name={index}
                       className="appearance-none rounded-full h-3 w-3 border border-gray-300 bg-white checked:bg-green-600 checked:border-green-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                     />
-                    <label
-                      for={index}
-                      className="ml-2 text-sm font-medium text-black cursor-pointer"
-                    >
-                      {data.choice}
-                    </label>
-                  </div>
+                    {data.choice}
+                  </label>
+                  // </div>
                 ))}
               </div>
               {currentQuestion === questions.length ? (
                 <button
                   type="button"
-                  class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 mt-10"
+                  className="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 mt-10"
                   onClick={handleCalculateScore}
                 >
                   Finish
@@ -155,7 +163,7 @@ export default function Quiz() {
               ) : (
                 <button
                   type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 mt-10"
+                  className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 mt-10"
                   onClick={handleNext}
                 >
                   Next
