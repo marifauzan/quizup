@@ -116,9 +116,12 @@ function Survey(): JSX.Element {
           feedback will help us determine what features to add and how we can
           make the product better for you.
         </p>
-        <a href="#my-modal-2" className="underline text-sm text-blue-300 ">
+        <label
+          htmlFor="my-modal"
+          className="modal-button underline text-sm text-blue-300 "
+        >
           Mind to share more of your thoughts?
-        </a>
+        </label>
       </div>
 
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
@@ -139,15 +142,23 @@ function Survey(): JSX.Element {
         </label>
       </label>
 
-      <div className="modal" id="my-modal-2">
+      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <div className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg text-gray-500">
-            Give us more feedback 🐧
-          </h3>
-          <input type="textarea" className="w-full py-7 border-b-2"></input>
-          <div className="modal-action">
-            <button className="btn border-none bg-rose-500">Yay!</button>
-          </div>
+          <h3 className="font-bold text-lg">Give us more feedback 🐧</h3>
+          <form>
+            <input type="textarea" className="w-full py-7 px-3 border-b-2" />
+            <div className="modal-action">
+              <button type="reset">
+                <label
+                  htmlFor="my-modal"
+                  className="btn border-none hover:bg-rose-600 bg-rose-500"
+                >
+                  Yay!
+                </label>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
